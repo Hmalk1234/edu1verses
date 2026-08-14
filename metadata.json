@@ -1,0 +1,6 @@
+{
+  "name": "Akademia Global",
+  "description": "Platform riset & rekayasa perangkat lunak terpadu: AI Research Lab & Paper Synthesizer, System Design & Chaos Engineering Arena, Autonomous Design SF System, PRD Planner, Canvas AI PPT, AI Web Builder sandbox, kurikulum interdisipliner, dan admisi universitas global.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
