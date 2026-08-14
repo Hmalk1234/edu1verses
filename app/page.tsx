@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, Variants } from 'motion/react';
 import { 
   useStudyProgress 
 } from '@/lib/storage';
@@ -34,6 +34,28 @@ import { MasteryAnalytics } from '@/components/MasteryAnalytics';
 import { 
   Sparkles 
 } from 'lucide-react';
+
+const smoothPageVariants: Variants = {
+  initial: { opacity: 0, y: 12, scale: 0.996 },
+  animate: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: {
+      duration: 0.28,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  },
+  exit: { 
+    opacity: 0, 
+    y: -8, 
+    scale: 0.996,
+    transition: {
+      duration: 0.18,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};
 
 export default function Home() {
   const {
@@ -133,10 +155,10 @@ export default function Home() {
           {activeTab === 'dashboard' && (
             <motion.div
               key="dashboard"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <BentoDashboard
                 progress={progress}
@@ -156,10 +178,10 @@ export default function Home() {
           {activeTab === 'knowledge-map' && (
             <motion.div
               key="knowledge-map"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <KnowledgeMap
                 completedLessonIds={progress.completedLessonIds}
@@ -172,10 +194,10 @@ export default function Home() {
           {activeTab === 'courses' && (
             <motion.div
               key="courses"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <CourseCatalog
                 completedLessonIds={progress.completedLessonIds}
@@ -188,10 +210,10 @@ export default function Home() {
           {activeTab === 'flashcards' && (
             <motion.div
               key="flashcards"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <FlashcardArena
                 onAwardXP={awardDirectXP}
@@ -203,10 +225,10 @@ export default function Home() {
           {activeTab === 'analytics' && (
             <motion.div
               key="analytics"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <MasteryAnalytics
                 progress={progress}
@@ -222,10 +244,10 @@ export default function Home() {
           {activeTab === 'lesson' && activeCourse && activeLesson && (
             <motion.div
               key="lesson"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <LessonViewer
                 course={activeCourse}
@@ -246,10 +268,10 @@ export default function Home() {
           {activeTab === 'universities' && (
             <motion.div
               key="universities"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <UniversityTracker
                 completedLessonIds={progress.completedLessonIds}
@@ -269,10 +291,10 @@ export default function Home() {
           {activeTab === 'certificates' && (
             <motion.div
               key="certificates"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <CertificateCenter
                 certificates={progress.certificates}
@@ -285,10 +307,10 @@ export default function Home() {
           {activeTab === 'ai-research-lab' && (
             <motion.div
               key="ai-research-lab"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <AIResearchLab />
             </motion.div>
@@ -297,10 +319,10 @@ export default function Home() {
           {activeTab === 'system-design' && (
             <motion.div
               key="system-design"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <SystemDesignArena />
             </motion.div>
@@ -309,10 +331,10 @@ export default function Home() {
           {activeTab === 'prd-builder' && (
             <motion.div
               key="prd-builder"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <PRDBuilder />
             </motion.div>
@@ -321,10 +343,10 @@ export default function Home() {
           {activeTab === 'presentation' && (
             <motion.div
               key="presentation"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <PresentationCanvas />
             </motion.div>
@@ -333,10 +355,10 @@ export default function Home() {
           {activeTab === 'web-builder' && (
             <motion.div
               key="web-builder"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <AIWebBuilder />
             </motion.div>
@@ -345,10 +367,10 @@ export default function Home() {
           {activeTab === 'design-sf' && (
             <motion.div
               key="design-sf"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <DesignSFShowcase />
             </motion.div>
@@ -357,10 +379,10 @@ export default function Home() {
           {activeTab === 'playground' && (
             <motion.div
               key="playground"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              variants={smoothPageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
               <CodePlayground onOpenAITutor={() => setIsAITutorOpen(true)} />
             </motion.div>

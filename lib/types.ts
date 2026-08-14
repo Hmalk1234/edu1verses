@@ -4,9 +4,61 @@ export type Category =
   | 'science'
   | 'humanities'
   | 'engineering'
+  | 'medical'
+  | 'business'
+  | 'law'
+  | 'basic-education'
   | 'specialized';
 
-export type DifficultyLevel = 'Pemula (Beginner)' | 'Menengah (Intermediate)' | 'Lanjutan (Advanced)' | 'Mastery / Riset';
+export type DifficultyLevel = 
+  | 'SD (Sekolah Dasar)'
+  | 'SMP (Sekolah Menengah Pertama)'
+  | 'SMA / SMK'
+  | 'Universitas (S1/Undergraduate)'
+  | 'Pascasarjana / Riset (S2/S3)'
+  | 'Pemula (Beginner)' 
+  | 'Menengah (Intermediate)' 
+  | 'Lanjutan (Advanced)' 
+  | 'Mastery / Riset';
+
+export type EducationStage = 'SD' | 'SMP' | 'SMA' | 'Universitas' | 'Pascasarjana' | 'Semua';
+
+export interface CareerMatchMajor {
+  rank: number;
+  majorName: string;
+  faculty: string;
+  matchScore: number; // e.g. 96
+  matchReason: string;
+  recommendedUniversities: {
+    name: string;
+    country: string;
+    worldRank?: number;
+    admissionFocus: string;
+  }[];
+  careerProspects: {
+    jobTitle: string;
+    salaryRange: string;
+    jobDescription: string;
+    growthDemand: string;
+  }[];
+  keySkillsToMaster: string[];
+}
+
+export interface CareerMatchReport {
+  userSummary: {
+    dominantCompetency: string;
+    learningArchetype: string;
+    estimatedReadinessScore: number;
+    strongestSubject: string;
+  };
+  top5Majors: CareerMatchMajor[];
+  swotAnalysis: {
+    strengths: string[];
+    growthAreas: string[];
+    strategicAdvice: string;
+  };
+  recommendedNextCourses: string[];
+}
 
 export interface QuizQuestion {
   id: string;
